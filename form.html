@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Acta Constitutiva</title>
+  <!-- Iconos -->
+  <link rel="icon" href="LogoSEUC.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/LogoSEUC-32x32.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <!-- ... resto del head ... -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Puedes incluir Font Awesome si lo necesitas -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background: #fffffc;
+      color: #000;
+    }
+    header {
+      background: #8E94F2;
+      color: #fffffc;
+      padding: 30px 0;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 18px;
+    }
+    .banner {
+      background: linear-gradient(rgba(142, 148, 242, 0.7), rgba(159, 160, 255, 0.7)), url('https://via.placeholder.com/1600x300');
+      background-size: cover;
+      background-position: center;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fffffc;
+      text-align: center;
+    }
+    .banner h2 {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+    .container {
+      max-width: 850px;
+      margin: 40px auto;
+      background: #fffffc;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+    h2.section-title {
+      color: #8E94F2;
+      font-size: 28px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #9FA0FF;
+      padding-bottom: 10px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    input[type="text"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    .radio-group {
+      margin-bottom: 15px;
+      display: flex;
+      flex-direction: column;
+    }
+    .radio-option {
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .radio-option:hover {
+      background: #f0f0f0;
+    }
+    .radio-option input {
+      margin-right: 10px;
+    }
+    button {
+      display: inline-block;
+      padding: 12px 25px;
+      background-color: #8E94F2;
+      border: none;
+      color: #fffffc;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #9FA0FF;
+      transform: translateY(-2px);
+    }
+    #summary {
+      background: #f7f7f7;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 30px;
+      white-space: pre-wrap;
+      border-left: 4px solid #8E94F2;
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+    #downloadPDF {
+      display: none;
+      background-color: #e74c3c;
+      margin-top: 15px;
+    }
+    #downloadPDF:hover {
+      background-color: #c0392b;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    footer {
+      background: #000;
+      color: #fffffc;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>Socied&forall;d En Un Click</h1>
+    <p>Constituye tu Entidad Legalmente y Protege tu Negocio</p>
+  </header>
+  
+  <!-- Banner -->
+  <div class="banner">
+    <div>
+      <h2>Completa tu Acta Constitutiva</h2>
+      <p>Genera tu documento legalmente conforme a la Ley General De Sociedades Mercantiles.</p>
+    </div>
+  </div>
+  
+  <!-- Contenedor del Formulario -->
+  <div class="container">
+    <center>
+    <h2 class="section-title">Formulario de Acta Constitutiva</h2>
+    </center>
+    <form id="actaForm">
+      <!-- Sección: Datos de Socios -->
+      <section>
+        <h2 class="section-title">Datos de los Socios</h2>
+        <label for="socioNombre">Nombre(s) y Apellido(s) del Socio:</label>
+        <input type="text" id="socioNombre" placeholder="Ej. Juan Pérez" required>
+        
+        <label for="socioNacionalidad">Nacionalidad:</label>
+        <input type="text" id="socioNacionalidad" placeholder="Ej. Mexicana" required>
+        
+        <label for="socioDomicilio">Domicilio:</label>
+        <input type="text" id="socioDomicilio" placeholder="Ej. Calle Ejemplo #123, Ciudad" required>
+      </section>
+      
+      <!-- Sección: Datos de la Sociedad -->
+      <section>
+        <h2 class="section-title">Datos de la Sociedad</h2>
+        <label for="objetoSocial">Objeto Social:</label>
+        <textarea id="objetoSocial" placeholder="Describe las actividades que realizará la sociedad" required></textarea>
+        
+        <label for="razonSocial">Razón Social / Denominación:</label>
+        <input type="text" id="razonSocial" placeholder="Ej. Empresa XYZ, S.A. de C.V." required>
+        
+        <label for="duracion">Duración de la Sociedad:</label>
+        <input type="text" id="duracion" placeholder="Ej. Indefinida o 20 años" required>
+        
+        <label for="domicilioSocial">Domicilio Social:</label>
+        <input type="text" id="domicilioSocial" placeholder="Ej. Ciudad, Estado" required>
+      </section>
+      
+      <!-- Sección: Capital Social y Aportaciones -->
+      <section>
+        <h2 class="section-title">Capital Social y Aportaciones</h2>
+        <label for="capitalSocial">Importe del Capital Social (MXN):</label>
+        <input type="number" id="capitalSocial" placeholder="Ej. 100000" required>
+        
+        <label for="aportaciones">Detalle de las Aportaciones (dinero, bienes, servicios, valor y criterio de valorización):</label>
+        <textarea id="aportaciones" placeholder="Describe lo que aporta cada socio" required></textarea>
+      </section>
+      
+      <!-- Sección: Administración -->
+      <section>
+        <h2 class="section-title">Administración y Representación</h2>
+        <label for="administracion">Forma de Administración y Facultades de los Administradores:</label>
+        <textarea id="administracion" placeholder="Describe la forma de administración, nombramiento y facultades" required></textarea>
+        
+        <label for="firmaSocial">Nombramiento de Administradores y Designación de Quienes Llevan la Firma Social:</label>
+        <textarea id="firmaSocial" placeholder="Ej. Juan Pérez designado como representante legal" required></textarea>
+      </section>
+      
+      <!-- Sección: Distribución de Utilidades y Pérdidas -->
+      <section>
+        <h2 class="section-title">Distribución de Utilidades y Pérdidas</h2>
+        <label for="distribucion">Forma de Distribución de Utilidades y Pérdidas:</label>
+        <textarea id="distribucion" placeholder="Indica cómo se repartirán las utilidades y las pérdidas" required></textarea>
+      </section>
+      
+      <!-- Sección: Fondo de Reserva -->
+      <section>
+        <h2 class="section-title">Fondo de Reserva</h2>
+        <label for="fondoReserva">Importe del Fondo de Reserva (MXN):</label>
+        <input type="number" id="fondoReserva" placeholder="Ej. 5000" required>
+      </section>
+      
+      <!-- Sección: Disolución y Liquidación -->
+      <section>
+        <h2 class="section-title">Disolución y Liquidación</h2>
+        <label for="disolucion">Causales de Disolución Anticipada:</label>
+        <textarea id="disolucion" placeholder="Describe las causales de disolución" required></textarea>
+        
+        <label for="liquidacion">Bases para la Liquidación y Elección de Liquidadores:</label>
+        <textarea id="liquidacion" placeholder="Describe el procedimiento de liquidación y elección de liquidadores" required></textarea>
+      </section>
+      
+      <button type="submit">Generar Acta Constitutiva</button>
+    </form>
+    
+    <!-- Resumen y Descarga de PDF -->
+    <div id="summary"></div>
+    <button id="downloadPDF">Descargar PDF</button>
+  </div>
+  
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 SociedadEnUnClick. Todos los derechos reservados.</p>
+  </footer>
+  
+  <!-- jsPDF desde CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    // Variable con el logo en Base64 o URL pública (reemplaza con tu cadena o URL)
+    const logoBase64 = "data:image/png;base64,REEMPLAZA_ESTA_CADENA_CON_TU_LOGO_EN_BASE64";
+    
+    const actaForm = document.getElementById("actaForm");
+    const summaryDiv = document.getElementById("summary");
+    const downloadPDFBtn = document.getElementById("downloadPDF");
+    
+    actaForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      
+      // Recoger datos del formulario
+      const socioNombre = document.getElementById("socioNombre").value;
+      const socioNacionalidad = document.getElementById("socioNacionalidad").value;
+      const socioDomicilio = document.getElementById("socioDomicilio").value;
+      const objetoSocial = document.getElementById("objetoSocial").value;
+      const razonSocial = document.getElementById("razonSocial").value;
+      const duracion = document.getElementById("duracion").value;
+      const domicilioSocial = document.getElementById("domicilioSocial").value;
+      const capitalSocial = document.getElementById("capitalSocial").value;
+      const aportaciones = document.getElementById("aportaciones").value;
+      const administracion = document.getElementById("administracion").value;
+      const firmaSocial = document.getElementById("firmaSocial").value;
+      const distribucion = document.getElementById("distribucion").value;
+      const fondoReserva = document.getElementById("fondoReserva").value;
+      const disolucion = document.getElementById("disolucion").value;
+      const liquidacion = document.getElementById("liquidacion").value;
+      
+      // Crear el resumen del acta constitutiva
+      let resumen = `<h2 style="text-align:center; color: #8E94F2; margin-bottom:20px;">Acta Constitutiva de Sociedad Mercantil</h2>
+      
+<strong>1. Datos de los Socios:</strong><br>
+- Nombre: ${socioNombre}<br>
+- Nacionalidad: ${socioNacionalidad}<br>
+- Domicilio: ${socioDomicilio}<br><br>
+
+<strong>2. Datos de la Sociedad:</strong><br>
+- Objeto Social: ${objetoSocial}<br>
+- Razón Social / Denominación: ${razonSocial}<br>
+- Duración: ${duracion}<br>
+- Domicilio Social: ${domicilioSocial}<br><br>
+
+<strong>3. Capital Social y Aportaciones:</strong><br>
+- Importe del Capital Social: MXN ${capitalSocial}<br>
+- Aportaciones: ${aportaciones}<br><br>
+
+<strong>4. Administración y Representación:</strong><br>
+- Forma de Administración y Facultades: ${administracion}<br>
+- Nombramiento y Designación de Firmantes: ${firmaSocial}<br><br>
+
+<strong>5. Distribución de Utilidades y Pérdidas:</strong><br>
+- Mecanismo de Distribución: ${distribucion}<br><br>
+
+<strong>6. Fondo de Reserva:</strong><br>
+- Importe del Fondo de Reserva: MXN ${fondoReserva}<br><br>
+
+<strong>7. Disolución y Liquidación:</strong><br>
+- Causales de Disolución Anticipada: ${disolucion}<br>
+- Bases para Liquidación y Elección de Liquidadores: ${liquidacion}<br><br>
+
+<em>El presente acta se formula de acuerdo a lo establecido en la LGSM.</em>`;
+      
+      summaryDiv.innerHTML = resumen;
+      summaryDiv.style.display = "block";
+      downloadPDFBtn.style.display = "inline-block";
+      
+      // Desplazar hacia el resumen
+      summaryDiv.scrollIntoView({ behavior: 'smooth' });
+    });
+    
+    downloadPDFBtn.addEventListener("click", function() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      
+      // Insertar logo en el PDF (ajusta posición y tamaño)
+      doc.addImage(logoBase64, 'PNG', 10, 10, 30, 30);
+      
+      // Agregar título debajo del logo
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(16);
+      doc.text("Acta Constitutiva de Sociedad Mercantil", 50, 25);
+      
+      // Agregar el resto del texto a partir de y=40
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(11);
+      const summaryText = summaryDiv.textContent;
+      const lines = doc.splitTextToSize(summaryText, 180);
+      doc.text(lines, 10, 40);
+      doc.save("Acta_Constitutiva.pdf");
+    });
+  </script>
+</body>
+</html>
