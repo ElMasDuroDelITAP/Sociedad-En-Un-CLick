@@ -4,12 +4,11 @@
   <meta charset="UTF-8">
   <title>SOCIEDAD EN UN CLICK</title>
 
- <!-- Iconos -->
+  <!-- Iconos -->
   <link rel="icon" href="LogoSEUC.ico" type="image/x-icon">
   <link rel="icon" type="image/png" sizes="32x32" href="images/LogoSEUC-32x32.png">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-  <!-- ... resto del head ... -->
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
@@ -24,6 +23,7 @@
       line-height: 1.6;
       background: #fffffc;
       color: #000000;
+      position: relative;
     }
     header {
       background: #8E94F2;
@@ -31,6 +31,7 @@
       padding: 30px 0;
       text-align: center;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      position: relative;
     }
     header h1 {
       font-size: 36px;
@@ -127,8 +128,11 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       padding: 30px;
       flex: 1 1 calc(50% - 30px);
-      transition: transform 0.3s ease;
+      transition: all 0.3s ease;
       border-top: 5px solid #9FA0FF;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
     }
     .benefit-item:hover, .problem-item:hover {
       transform: translateY(-10px);
@@ -153,6 +157,49 @@
     }
     .problem-item .icon-wrapper {
       background: #BEB7A4;
+    }
+    .more-info {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(142, 148, 242, 0.95);
+      color: #fffffc;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(100%);
+      transition: all 0.3s ease;
+      border-radius: 10px;
+    }
+    .problem-item .more-info {
+      background: rgba(190, 183, 164, 0.95);
+    }
+    .benefit-item:hover .more-info, .problem-item:hover .more-info {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .more-info h4 {
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+    .more-info ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .more-info ul li {
+      margin-bottom: 10px;
+      padding-left: 25px;
+      position: relative;
+    }
+    .more-info ul li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #fffffc;
     }
     footer {
       background: #000000;
@@ -200,6 +247,106 @@
       background: #000000;
       color: #fffffc;
     }
+    
+    /* Estilos para el menú lateral */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 280px;
+      height: 100vh;
+      background: #8E94F2;
+      box-shadow: -4px 0 10px rgba(0,0,0,0.1);
+      z-index: 1000;
+      padding-top: 20px;
+      overflow-y: auto;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .sidebar.active {
+      transform: translateX(0);
+    }
+    
+    .menu-container {
+      padding: 10px;
+    }
+    
+    .menu-item {
+      margin-bottom: 15px;
+    }
+    
+    .menu-title {
+      display: block;
+      color: #fffffc;
+      font-weight: bold;
+      font-size: 18px;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .menu-title:hover {
+      background: rgba(255, 255, 252, 0.2);
+    }
+    
+    .dropdown-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      background: rgba(255, 255, 252, 0.1);
+      border-radius: 5px;
+      margin-top: 5px;
+    }
+    
+    .dropdown-content.active {
+      max-height: 500px;
+    }
+    
+    .submenu-item {
+      padding: 8px 15px 8px 30px;
+      display: block;
+      color: #fffffc;
+      text-decoration: none;
+      margin-bottom: 5px;
+      transition: all 0.3s ease;
+      border-radius: 5px;
+    }
+    
+    .submenu-item:hover {
+      background: rgba(255, 255, 252, 0.2);
+    }
+    
+    /* Estilos para el toggle del menú */
+    .menu-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #8E94F2;
+      color: #fffffc;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    
+    /* Ajustar el contenido principal para que no se sobreponga con el menú */
+    .main-content {
+      transition: margin-right 0.3s ease;
+    }
+    
+    .main-content.shifted {
+      margin-right: 280px;
+    }
+    
+    /* Estilos responsive */
     @media (max-width: 768px) {
       .banner-content h2 {
         font-size: 32px;
@@ -216,127 +363,286 @@
       .benefit-item, .problem-item {
         flex: 1 1 100%;
       }
+      .logo-container {
+        top: 10px;
+        right: 10px;
+      }
+      .logo {
+        width: 60px;
+      }
+      .sidebar {
+        width: 100%;
+      }
+      
+      .main-content.shifted {
+        margin-right: 0;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <h1 style="font-size:60px;">Sociedad En Un Click </h1>
-    <h3>Constituye tu Entidad Legalmente</h3>
-    <p>Protege tu patrimonio y impulsa el crecimiento de tu negocio</p>
-  </header>
-
-  <!-- Banner principal -->
-  <div class="banner">
-    <div class="banner-content">
-      <h2>Constituye tu Empresa de Forma Correcta y Legal</h2>
-      <p>Garantiza seguridad jurídica, beneficios fiscales y crecimiento sostenible</p>
-      <a href="#beneficios" class="cta-button"><i class="fas fa-arrow-right"></i> Conoce Más</a>
+  <!-- Toggle para el menú -->
+  <div class="menu-toggle" id="menuToggle">
+    <i class="fas fa-bars fa-lg"></i>
+  </div>
+  
+  <!-- Menú lateral -->
+  <div class="sidebar" id="sidebar">
+    <div class="menu-container">
+      <!-- Inicio -->
+      <div class="menu-item">
+        <a href="#" class="menu-title">
+          <i class="fas fa-home"></i> Inicio
+        </a>
+      </div>
+      
+      <!-- Sociedades Mercantiles -->
+      <div class="menu-item">
+        <div class="menu-title" onclick="toggleDropdown(this)">
+          <i class="fas fa-building"></i> Sociedades Mercantiles <i class="fas fa-chevron-down" style="float: right;"></i>
+        </div>
+        <div class="dropdown-content">
+          <a href="SCS.html" class="submenu-item">Sociedad en Comandita Simple (S.C.S.)</a>
+          <a href="SRL.html" class="submenu-item">Sociedad de Responsabilidad Limitada (S. de R.L.)</a>
+          <a href="SA.html" class="submenu-item">Sociedad Anónima (S.A.)</a>
+          <a href="SCA.html" class="submenu-item">Sociedad en Comandita por Acciones (S.C.A.)</a>
+        </div>
+      </div>
+      
+      <!-- Sociedades Civiles -->
+      <div class="menu-item">
+        <div class="menu-title" onclick="toggleDropdown(this)">
+          <i class="fas fa-users"></i> Sociedades Civiles <i class="fas fa-chevron-down" style="float: right;"></i>
+        </div>
+        <div class="dropdown-content">
+          <a href="SCivil.html" class="submenu-item">Sociedad Civil (S.C.)</a>
+          <a href="AC.html" class="submenu-item">Asociación Civil (A.C.)</a>
+          <a href="SSS.html" class="submenu-item">Sociedad de Solidaridad Social (S.S.S.)</a>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- Sección de Beneficios -->
-  <section id="beneficios">
-    <h2>Beneficios y Ventajas</h2>
-    <p class="section-intro">Descubre por qué constituir legalmente tu entidad es fundamental para el éxito y crecimiento sostenible de tu negocio.</p>
-    <div class="benefits">
-      <div class="benefit-item">
-        <h3>
-          <div class="icon-wrapper">
-            <i class="fas fa-shield-alt"></i>
-          </div>
-          Protección Patrimonial
-        </h3>
-        <p>La separación de patrimonio personal y empresarial reduce riesgos y protege tus bienes personales frente a deudas o responsabilidades del negocio.</p>
-      </div>
-      <div class="benefit-item">
-        <h3>
-          <div class="icon-wrapper">
-            <i class="fas fa-hand-holding-usd"></i>
-          </div>
-          Acceso a Financiamiento
-        </h3>
-        <p>Las entidades legalmente constituidas tienen mayor credibilidad bancaria y mejores condiciones para préstamos, créditos e inversiones de capital.</p>
-      </div>
-      <div class="benefit-item">
-        <h3>
-          <div class="icon-wrapper">
-            <i class="fas fa-file-invoice-dollar"></i>
-          </div>
-          Beneficios Fiscales
-        </h3>
-        <p>Cumplir con la ley te permite aprovechar incentivos y beneficios tributarios, reduciendo la carga fiscal mientras operas con total transparencia.</p>
-      </div>
-      <div class="benefit-item">
-        <h3>
-          <div class="icon-wrapper">
-            <i class="fas fa-handshake"></i>
-          </div>
-          Credibilidad y Confianza
-        </h3>
-        <p>Operar legalmente genera confianza entre clientes, proveedores y socios comerciales, facilitando relaciones de negocios duraderas y exitosas.</p>
+  <!-- Contenido principal -->
+  <div class="main-content" id="mainContent">
+    <!-- Header -->
+    <header>
+      <img src="logo-png.png" alt="Sociedad En Un Click Logo" width="322" height="322">
+      <h3>Constituye tu Entidad Legalmente</h3>
+      <p>Protege tu patrimonio e impulsa el crecimiento de tu negocio</p>
+    </header>
+
+    <!-- Banner principal -->
+    <div class="banner">
+      <div class="banner-content">
+        <h2>Constituye tu Empresa de Forma Correcta y Legal</h2>
+        <p>Garantiza seguridad jurídica, beneficios fiscales y crecimiento sostenible</p>
+        
       </div>
     </div>
-  </section>
 
-  <!-- Sección de Problemas -->
-  <section id="problemas" class="alternate-bg">
-    <h2>Riesgos de la Informalidad</h2>
-    <p class="section-intro">Conoce las consecuencias negativas que puede traer para tu negocio no contar con una constitución legal adecuada.</p>
-    <div class="problems">
-      <div class="problem-item">
-        <h3>
-          <div class="icon-wrapper">
-            <i class="fas fa-exclamation-triangle"></i>
+    <!-- Sección de Beneficios -->
+    <section id="beneficios">
+      <h2>Beneficios y Ventajas</h2>
+      <p class="section-intro">Descubre por qué constituir legalmente tu entidad es fundamental para el éxito y crecimiento sostenible de tu negocio.</p>
+      <div class="benefits">
+        <div class="benefit-item">
+          <h3>
+            <div class="icon-wrapper">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            Protección Patrimonial
+          </h3>
+          <p>La separación de patrimonio personal y empresarial reduce riesgos y protege tus bienes personales frente a deudas o responsabilidades del negocio.</p>
+          <div class="more-info">
+            <center><h5>¿Cómo te beneficia?</h5></center>
+            <ul>
+              <li>Protección total de tu patrimonio personal ante cualquier demanda</li>
+              <li>Separación clara entre deudas empresariales y personales</li>
+              <li>Responsabilidad limitada al capital aportado a la sociedad</li>
+              
+            </ul>
           </div>
-          Responsabilidad Ilimitada
-        </h3>
-        <p>Sin constitución legal, los empresarios enfrentan deudas y obligaciones con su patrimonio personal, poniendo en riesgo todos sus bienes.</p>
-      </div>
-      <div class="problem-item">
-        <h3>
-          <div class="icon-wrapper">
-            <i class="fas fa-thumbs-down"></i>
+        </div>
+        <div class="benefit-item">
+          <h3>
+            <div class="icon-wrapper">
+              <i class="fas fa-hand-holding-usd"></i>
+            </div>
+            Acceso a Financiamiento
+          </h3>
+          <p>Las entidades legalmente constituidas tienen mayor credibilidad bancaria y mejores condiciones para préstamos, créditos e inversiones de capital.</p>
+          <div class="more-info">
+            <center><h5>Abre puertas financieras</h5></center>
+            <ul>
+              <li>Tasas de interés preferenciales en préstamos bancarios</li>
+              <li>Elegibilidad para programas de apoyo gubernamental</li>
+              <li>Atracción de inversionistas potenciales</li>
+              
+            </ul>
           </div>
-          Falta de Credibilidad
-        </h3>
-        <p>La informalidad genera desconfianza en clientes e inversionistas, limitando el crecimiento del negocio y cerrando puertas a nuevas oportunidades.</p>
-      </div>
-      <div class="problem-item">
-        <h3>
-          <div class="icon-wrapper">
-            <i class="fas fa-gavel"></i>
+        </div>
+        <div class="benefit-item">
+          <h3>
+            <div class="icon-wrapper">
+              <i class="fas fa-file-invoice-dollar"></i>
+            </div>
+            Beneficios Fiscales
+          </h3>
+          <p>Cumplir con la ley te permite aprovechar incentivos y beneficios tributarios, reduciendo la carga fiscal mientras operas con total transparencia.</p>
+          <div class="more-info">
+            <center><h5>Optimiza tu tributación</h5></center>
+            <ul>
+              <li>Deducciones exclusivas para personas jurídicas</li>
+              <li>Posibilidad de diferir impuestos en reinversiones</li>
+              <li>Estructura de costos empresariales deducibles</li>
+              
+            </ul>
           </div>
-          Sanciones Legales
-        </h3>
-        <p>Operar sin estar legalmente constituido implica riesgos de multas significativas, cierre de operaciones y sanciones administrativas severas.</p>
-      </div>
-      <div class="problem-item">
-        <h3>
-          <div class="icon-wrapper">
-            <i class="fas fa-ban"></i>
+        </div>
+        <div class="benefit-item">
+          <h3>
+            <div class="icon-wrapper">
+              <i class="fas fa-handshake"></i>
+            </div>
+            Credibilidad y Confianza
+          </h3>
+          <p>Operar legalmente genera confianza entre clientes, proveedores y socios comerciales, facilitando relaciones de negocios duraderas y exitosas.</p>
+          <div class="more-info">
+            <center><h5>Potencia tu imagen empresarial</h5></center>
+            <ul>
+              <li>Mayor confianza de clientes corporativos</li>
+              <li>Mejores condiciones con proveedores y distribuidores</li>
+              <li>Capacidad para licitar en contratos públicos y privados</li>
+              
+            </ul>
           </div>
-          Limitaciones de Financiamiento
-        </h3>
-        <p>Las entidades informales tienen acceso restringido o nulo a créditos bancarios y capital de inversión, dificultando su expansión y desarrollo.</p>
+        </div>
       </div>
+    </section>
+
+    <!-- Sección de Problemas -->
+    <section id="problemas" class="alternate-bg">
+      <h2>Riesgos de la Informalidad</h2>
+      <p class="section-intro">Conoce las consecuencias negativas que puede traer para tu negocio no contar con una constitución legal adecuada.</p>
+      <div class="problems">
+        <div class="problem-item">
+          <h3>
+            <div class="icon-wrapper">
+              <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            Responsabilidad Ilimitada
+          </h3>
+          <p>Sin constitución legal, los empresarios enfrentan deudas y obligaciones con su patrimonio personal, poniendo en riesgo todos sus bienes.</p>
+          <div class="more-info">
+            <center>
+            <h5>¿Qué pones en riesgo?</h5></center>
+            <ul>
+              <li>Tu casa, vehículos y ahorros personales</li>
+              <li>Bienes familiares no relacionados con el negocio</li>
+              <li>Responsabilidad total por deudas empresariales</li>
+             
+            </ul>
+          </div>
+        </div>
+        <div class="problem-item">
+          <h3>
+            <div class="icon-wrapper">
+              <i class="fas fa-thumbs-down"></i>
+            </div>
+            Falta de Credibilidad
+          </h3>
+          <p>La informalidad genera desconfianza en clientes e inversionistas, limitando el crecimiento del negocio y cerrando puertas a nuevas oportunidades.</p>
+          <div class="more-info">
+            <center>
+            <h5>Oportunidades que pierdes</h5></center>
+            <ul>
+              <li>Clientes corporativos que exigen facturación formal</li>
+              <li>Alianzas estratégicas con empresas establecidas</li>
+              <li>Confianza de proveedores para créditos comerciales</li>
+             
+            </ul>
+          </div>
+        </div>
+        <div class="problem-item">
+          <h3>
+            <div class="icon-wrapper">
+              <i class="fas fa-gavel"></i>
+            </div>
+            Sanciones Legales
+          </h3>
+          <p>Operar sin estar legalmente constituido implica riesgos de multas significativas, cierre de operaciones y sanciones administrativas severas.</p>
+          <div class="more-info">
+            <center>
+            <h5>Consecuencias legales</h5></center>
+            <ul>
+              <li>Multas por incumplimiento fiscal y laboral</li>
+              <li>Clausura temporal o definitiva del negocio</li>
+              <li>Imposibilidad de defender derechos de propiedad intelectual</li>
+              
+            </ul>
+          </div>
+        </div>
+        <div class="problem-item">
+          <h3>
+            <div class="icon-wrapper">
+              <i class="fas fa-ban"></i>
+            </div>
+            Limitaciones de Financiamiento
+          </h3>
+          <p>Las entidades informales tienen acceso restringido o nulo a créditos bancarios y capital de inversión, dificultando su expansión y desarrollo.</p>
+          <div class="more-info">
+            <center>
+            <h5>Barreras financieras</h5></center>
+            <ul>
+              <li>Rechazo automático de solicitudes de crédito bancario</li>
+              <li>Imposibilidad de acceder a capital de inversión</li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de Llamado a la Acción -->
+    <div class="cta-section" id="cta">
+      <h2>¡Da el Paso y Formaliza tu Empresa!</h2>
+      <p style="font-size: 18px; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
+        Aprovecha las ventajas de operar legalmente. Protege tu patrimonio, mejora tu imagen y accede a mejores oportunidades de financiamiento para impulsar el crecimiento de tu negocio.
+      </p>
+      <a href="test.html" class="cta-button"><i class="fas fa-comments"></i> Asesoría</a>
     </div>
-  </section>
 
-  <!-- Sección de Llamado a la Acción -->
-  <div class="cta-section" id="cta">
-    <h2>¡Da el Paso y Formaliza tu Empresa!</h2>
-    <p style="font-size: 18px; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
-      Aprovecha las ventajas de operar legalmente. Protege tu patrimonio, mejora tu imagen y accede a mejores oportunidades de financiamiento para impulsar el crecimiento de tu negocio.
-    </p>
-    <a href="Formulario de Sociedades.html" class="cta-button"><i class="fas fa-comments"></i> Contáctanos para Asesoría</a>
+    <!-- Footer -->
+    <footer>
+      <p>© 2025 SociedadEnUnClick. Todos los derechos reservados.</p>
+    </footer>
+  </div>
+
+  <script>
+    // Funciones para el menú
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.getElementById('menuToggle');
+      const sidebar = document.getElementById('sidebar');
+      const mainContent = document.getElementById('mainContent');
+      
+      menuToggle.addEventListener('click', function() {
+        sidebar.classList.toggle('active');
+        mainContent.classList.toggle('shifted');
+      });
+    });
     
-  </div>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 SociedadEnUnClick. Todos los derechos reservados.</p>
-  </footer>
+    function toggleDropdown(element) {
+      const dropdown = element.nextElementSibling;
+      dropdown.classList.toggle('active');
+      
+      // Cambiar el ícono
+      const icon = element.querySelector('.fa-chevron-down, .fa-chevron-up');
+      if (icon) {
+        icon.classList.toggle('fa-chevron-down');
+        icon.classList.toggle('fa-chevron-up');
+      }
+    }
+  </script>
 </body>
 </html>

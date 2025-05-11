@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.C.A</title>
+    <!-- Iconos -->
+  <link rel="icon" href="LogoSEUC.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/LogoSEUC-32x32.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <style>
+        :root {
+            --primary: #8E94F2;
+            --primary-light: #9FA0FF;
+            --neutral-light: #FFFFFC;
+            --neutral-dark: #000000;
+            --secondary: #BEB7A4;
+            --primary-transparent: rgba(142, 148, 242, 0.95);
+            --secondary-transparent: rgba(190, 183, 164, 0.95);
+            --black-transparent: rgba(0, 0, 0, 0.6);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--neutral-light);
+            color: var(--neutral-dark);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: var(--neutral-light);
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: var(--primary-light);
+            padding: 0.8rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: var(--neutral-light);
+            text-decoration: none;
+            padding: 0.7rem 1.2rem;
+            margin: 0 0.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a:hover {
+            background-color: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        nav a:active {
+            transform: translateY(0);
+        }
+        
+        nav a::before {
+            content: "";
+            margin-right: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        nav a[href="#inicio"]::before {
+            content: "🏠";
+        }
+        
+        nav a[href="#definicion"]::before {
+            content: "📖";
+        }
+        
+        nav a[href="#caracteristicas"]::before {
+            content: "✅";
+        }
+        
+        nav a[href="#constitucion"]::before {
+            content: "📝";
+        }
+        
+        nav a[href="#analisis-foda"]::before {
+            content: "📊";
+        }
+        
+        nav a[href="#riesgos"]::before {
+            content: "⚠️";
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        main {
+            flex: 1;
+            padding: 2rem;
+        }
+
+        .banner {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--neutral-light);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--black-transparent);
+            z-index: 1;
+        }
+
+        .banner-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 0.5rem;
+        }
+
+        .list-styled {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .list-styled li {
+            margin-bottom: 0.5rem;
+        }
+
+        .risk-section {
+            background-color: var(--secondary);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .foda-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .foda-card {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .foda-card h3 {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .foda-card ul {
+            padding-left: 1.5rem;
+        }
+
+        .foda-card.fortalezas h3 {
+            color: #28a745;
+        }
+
+        .foda-card.oportunidades h3 {
+            color: #007bff;
+        }
+
+        .foda-card.debilidades h3 {
+            color: #dc3545;
+        }
+
+        .foda-card.amenazas h3 {
+            color: #ff9800;
+        }
+
+        footer {
+            background-color: var(--neutral-dark);
+            color: var(--neutral-light);
+            text-align: center;
+            padding: 1rem;
+            margin-top: auto;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+            }
+            
+            nav a {
+                margin: 0.3rem;
+                padding: 0.5rem 0.8rem;
+                font-size: 0.9rem;
+            }
+            
+            .foda-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .banner {
+                padding: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            h2 {
+                font-size: 1.3rem;
+            }
+            
+            nav a {
+                padding: 0.4rem 0.6rem;
+                font-size: 0.8rem;
+                margin: 0.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="LOgo-Png.png" alt="Trulli" width="150" height="150">
+        <h1>Sociedad en Comandita por Acciones</h1>
+    </header>
+    
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="#definicion">Definición</a>
+        <a href="#caracteristicas">Características</a>
+        <a href="#constitucion">Constitución</a>
+        <a href="#analisis-foda">Análisis FODA</a>
+    </nav>
+    
+    <div class="container">
+        <main>
+            <section id="inicio" class="banner">
+                <div class="banner-content">
+                    <h1> </h1>
+                    <p>Descubre todo sobre este tipo de sociedad mercantil: características, ventajas, desventajas y proceso de constitución.</p>
+                </div>
+            </section>
+            
+            <section id="definicion" class="card">
+                <h2>Definición</h2>
+                <p>  El artículo 207 de la LGSM establece que esta sociedad “se compone de uno o varios socios comanditados (responsables subsidiaria, ilimitada y solidariamente) y de uno o varios comanditarios (obligados sólo al pago de sus acciones)”. </p>
+                <p><strong>Artículos aplicables:</strong> Capítulo VI, arts. 207–211 de la LGSM  </p>
+            </section>
+            
+            <section id="caracteristicas" class="card">
+                <h2>Características Principales</h2>
+                <ul class="list-styled">
+                    <li><strong>Tipo de Socios:</strong>
+                        <ul>
+                            <p>    Comanditados: Responsables de manera subsidiaria, ilimitada y solidaria.</p>
+                            <p>    Comanditarios: Responsables hasta el monto de sus acciones.</p>
+                        </ul>
+                    </li>
+                    <li><strong>Capital:</strong> Dividido en acciones.</li>
+                    <li><strong>Administración:</strong> A cargo de los socios comanditados.</li>
+                    <li><strong>Denominación:</strong> Debe incluir "S.A."</li>
+                    <li><strong>Uso común:</strong> Empresas que combinan características de sociedades anónimas y en comandita.</li>
+                </ul>
+            </section>
+            
+            <section id="constitucion" class="card">
+                <h2>Constitución</h2>
+                <p> Se constituye mediante escritura pública que contenga la razón social (nombres de comanditados + “y compañía” o “S. en C. por A.” según art. 210) y su inscripción en el Registro Público de Comercio de conformidad con el art. 6 de la LGSM</p>
+            </section>
+            
+            <section id="analisis-foda" class="card">
+                <h2>Análisis FODA</h2>
+                <div class="foda-container">
+                    <div class="foda-card fortalezas">
+                        <h3>F - Fortalezas</h3>
+                        <ul>
+                            <li>Combina emisión de acciones (comanditarios) con gestión por socios gestores (comanditados).</li>
+                            <li>Atrae capital externo sin entregar la dirección.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="foda-card oportunidades">
+                        <h3>O - Oportunidades</h3>
+                        <ul>
+                            <li>Permite escalar proyectos de inversión combinando recursos y expertise.</li>
+                            <li>Buena para joint‑ventures entre inversionistas pasivos y gestores activos. </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="foda-card debilidades">
+                        <h3>D - Debilidades</h3>
+                        <ul>
+                            <li>Responsabilidad ilimitada de socios comanditados.</li>
+                            <li>Estructura interna más compleja y costosa de administrar.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="foda-card amenazas">
+                        <h3>A - Amenazas</h3>
+                        <ul>
+                            <li>Poca popularidad comparada con S.A. y S. de R.L., menor liquidez de acciones.</li>
+                            <li>Riesgo legal en caso de quiebras por responsabilidad de los comanditados. </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Sociedad En Un Click - Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        // JavaScript para manejar el scroll suave a las secciones
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Actualizar URL sin recargar la página
+                    history.pushState(null, null, targetId);
+                }
+            });
+        });
+
+        // Destacar la sección actual en el menú al hacer scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('main section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                
+                if (window.scrollY >= sectionTop - 100) {
+                    currentSection = '#' + section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.style.backgroundColor = '';
+                if (link.getAttribute('href') === currentSection) {
+                    link.style.backgroundColor = 'var(--primary)';
+                    link.style.transform = 'translateY(-2px)';
+                } else {
+                    link.style.transform = 'translateY(0)';
+                }
+            });
+        });
+        
+        // El menú ya incluye todos los enlaces
+    </script>
+</body>
+</html>
